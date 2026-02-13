@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Yashi ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+    background: linear-gradient(-45deg, #ff758c, #ff7eb3, #fad0c4, #fcb69f);
+    background-size: 400% 400%;
+    animation: gradientBG 12s ease infinite;
+    overflow-x: hidden;
+}
+
+@keyframes gradientBG {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+h1 {
+    margin-top: 80px;
+    font-size: 50px;
+    color: white;
+    text-shadow: 2px 2px 20px #ff4081;
+}
+
+h2 {
+    color: white;
+    margin-bottom: 30px;
+}
+
+button {
+    font-size: 20px;
+    padding: 15px 30px;
+    border: none;
+    cursor: pointer;
+    border-radius: 40px;
+    margin: 15px;
+    transition: 0.3s;
+}
+
+.yes {
+    background-color: #ff4081;
+    color: white;
+}
+
+.yes:hover {
+    transform: scale(1.1);
+}
+
+.no {
+    background-color: white;
+    color: #ff4081;
+    position: absolute;
+}
+
+#loveMessage {
+    display: none;
+    max-width: 750px;
+    margin: 40px auto;
+    font-size: 20px;
+    color: white;
+    line-height: 1.7;
+}
+
+#finalLine {
+    font-size: 28px;
+    margin-top: 20px;
+    color: #fff;
+    font-weight: bold;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {transform: scale(1);}
+    50% {transform: scale(1.05);}
+    100% {transform: scale(1);}
+}
+
+.heart {
+    position: fixed;
+    animation: float 6s linear infinite;
+    color: white;
+}
+
+@keyframes float {
+    0% {transform: translateY(100vh);}
+    100% {transform: translateY(-10vh);}
+}
+
+footer {
+    margin-top: 40px;
+    font-size: 18px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Yashi ❤️</h1>
+<h2>Yashi (My Sunshine ☀️), will you be my Valentine?</h2>
+
+<button class="yes" onclick="accept()">💖 Yes 💖</button>
+<button class="no" id="noBtn">No 😢</button>
+
+<div id="loveMessage">
+    <h2 id="typing"></h2>
+
+    <p>
+    From the day you came into my life, everything started feeling special.
+    Your smile heals my worst days,
+    your voice brings calm to my chaos,
+    and your presence makes my world brighter.
+    </p>
+
+    <p>
+    I don’t just like you… I deeply admire you.
+    Your kindness, your strength, your beautiful heart —
+    everything about you feels rare.
+    </p>
+
+    <p>
+    I want long conversations at midnight,
+    silly fights that end in laughter,
+    shared dreams,
+    and a future where we grow together.
+    </p>
+
+    <div id="finalLine">
+        Will you be mine forever? 💍❤️
+    </div>
+
+    <br><br>
+
+    <img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif"
+         width="250"
+         style="border-radius:20px; box-shadow:0 0 20px white;">
+
+    <footer>
+        <br><br>
+        Forever yours,<br>
+        Gourav ❤️
+    </footer>
+</div>
+
+<!-- MUSIC SECTION -->
+<audio id="bgMusic" loop>
+    <source src="perfect.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+
+noBtn.addEventListener("mouseover", function() {
+    noBtn.style.top = Math.random() * window.innerHeight + "px";
+    noBtn.style.left = Math.random() * window.innerWidth + "px";
+});
+
+function accept() {
+    document.getElementById("loveMessage").style.display = "block";
+    document.getElementById("bgMusic").play();
+    typeEffect();
+    createHearts();
+}
+
+function createHearts() {
+    setInterval(() => {
+        let heart = document.createElement("div");
+        heart.innerHTML = "💖";
+        heart.classList.add("heart");
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = Math.random() * 30 + 20 + "px";
+        heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 6000);
+    }, 300);
+}
+
+function typeEffect() {
+    const text = "My Love Letter To You 💌";
+    let i = 0;
+    function typing() {
+        if (i < text.length) {
+            document.getElementById("typing").innerHTML += text.charAt(i);
+            i++;
+            setTimeout(typing, 60);
+        }
+    }
+    typing();
+}
+</script>
+
+</body>
+</html>
